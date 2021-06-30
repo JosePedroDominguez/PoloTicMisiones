@@ -37,10 +37,11 @@ def Pantalla_de_Login(request):
 
 def Pantalla_de_Registro(request):
     if request.method == 'POST':
-       email = request.POST['email']
-       user = request.POST['user']
-       password = request.POST['password']
-       User(email = email, user = user, password = password).save()
+       correo = request.POST.get('correo','')
+       usuario = request.POST.get('usuario','')
+       contra = request.POST.get('contra','')
+       usr = User( email=correo , user = usuario, password = contra)
+       usr.save()
        messages.success(request,"Usurio creado con exito")
        return  render(request,'Registro.html')
     else:
