@@ -5,11 +5,11 @@
     <center>
     <h1 >Registro</h1>
     <center>
-    {% csrf_token %} 
-    <form>
+    <form method="post">
         <center>
-            <div class="contenedorFormulario">  
-                <table>
+            <div class="contenedorFormulario"> 
+                {% csrf_token %} 
+                <table>                
                         <tbody>
                             <tr>
                                 <td > Nombre de usuario </td>
@@ -31,16 +31,16 @@
                             </tr>                                       
                         </tbody>
                     </table>
+                    {% if messages %}
+                        {% for x in messages %}
+                        <b>{{ x }}<b>
+                        {% endfor %}
+                        {% endif %}
             </div>
         </center>
     </form>
-    {% if messages %}
-        {% for x in messages %}
-        <b>{{ x }}<b>
-        {% endfor %}
-        {% endif %}
-        <center>
-        <hr/>
-        <em> Si ya esta registrado <a href="{% url 'Pantalla de Login' %}">aga click aqui</a></em> 
-        </center>
+ <center>
+    <hr/>
+    <em> Si ya esta registrado <a href="{% url 'Pantalla de Login' %}">aga click aqui</a></em> 
+ </center>
 {% endblock %}
