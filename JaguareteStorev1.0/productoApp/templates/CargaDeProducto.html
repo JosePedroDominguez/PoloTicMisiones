@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content%}
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+           Error al carga el producto
+        </div>
+    {% endif %}
+    <h1>Carga de Productos<h1>
+    <form action="{% url 'guardarItem' %} " method = "POST">
+        {% csrf_token %}
+        {% if mensaje %}
+        <div class="alert alert-success" role="alert">
+           Producto cargado con exito 
+        </div>
+        {% endif %}
+        {{ form | crispy }}
+
+        <button type="submit" class="btn btn-secondary">Cargar Producto</button>
+
+    </form>    
+
+{% endblock %}

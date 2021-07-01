@@ -49,20 +49,23 @@
           </li>
           <li class="nav-item px-lg-4 {% if request.path == '/PantallaRegistro' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Registro' %}">Crear usuario</a>
-          </li>                   
+          </li>                             
           <li class="nav-item px-lg-4 {% if request.path == '/Pantalla_de_Contacto' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Contacto' %}">Contacto</a>
           </li>
-        <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Categorias
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li class="nav-item px-lg-4 {% if request.path == '/PantallaCargaProducto' %} active {% endif %}">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Cargar Producto' %}">cargar Item</a>
+          </li>          
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>

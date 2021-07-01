@@ -21,7 +21,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('storeApp/', include('storeApp.urls'))#enlaza con la App
+    path('storeApp/', include('storeApp.urls')),#enlaza con la App
+    path('registroApp/', include('registroApp.urls')),
+    path('productoApp/', include('productoApp.urls'))
+
 ]
 
 urlpatterns+=static(settings.MEDIA_URL , document_root= settings.MEDIA_ROOT)

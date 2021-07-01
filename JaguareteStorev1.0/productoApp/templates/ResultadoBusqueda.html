@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content%}
+    <h1>Busqueda de Producto<h1>
+    <!--<table class="table">-->
+    <!--<thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">nombre</th>
+        <th scope="col">imagen</th>
+        <th scope="col">tag</th>
+        <th scope="col">desc</th>
+        <th scope="col">precio</th>
+        </tr>
+    </thead>-->
+    <!--<tbody>-->
+    {% for x in items %}
+    {% endfor %}
+    <section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4" >
+                    <span class="section-heading-lower">{{x.name}}</span>
+                </h2>
+            </div>
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{x.image.url}}" alt="" style="width: 50%;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-upper">{{x.tag}}</span>
+                <span class="section-heading-upper">{{x.description}}</span>
+                <span class="section-heading-upper">{{x.price}}</span>
+              </h2>
+              
+             
+            </div>
+          </div>
+        </div>
+      </section>        
+        <!--<tr>
+        <th scope="row">{{ x.id }}</th>
+        <td>{{ x.name }}</td>
+        <td>{{ x.image }}</td>
+        <td>{{ x.tag }}</td>
+        <td>{{ x.description }}</td>
+        <td>{{ x.price }}</td>
+        </tr>
+        <tr>-->
+    <!--</tbody>
+    </table> -->  
+{% endblock %}
