@@ -5,11 +5,9 @@ from django.http.response import Http404
 
 from django.shortcuts import render,redirect, get_object_or_404
 
-from productoApp.forms import FomularioItem
+from productoApp.forms import FomularioItem,FomularioTag
 
-from productoApp.models import Items
-
-from productoApp.models import Tag
+from productoApp.models import Items,Tag
 
 from django.contrib import messages
 
@@ -23,6 +21,19 @@ def Pantalla_de_Producto(request,id):
         'prod':it
     }
     return  render(request,'PantallaProducto.html',data)
+@permission_required('productoApp.add_tag')
+def Cargar_Categoria(request):#SOLO VISIBLE PARA LOS ADMINISTRADORES
+    data ={
+        'form': FomularioTag()
+    }
+    if request.method == 'POST':
+        form =FomularioTag( data=request.POST, files= request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Cargado Correctamante")
+        else: 
+            data["form"] = form
+    return (render(request, "Carga_Categoria.html", data))
 
 @permission_required('productoApp.add_items')
 def Pantalla_de_Cargar_Producto(request):#SOLO VISIBLE PARA LOS ADMINISTRADORES
@@ -83,16 +94,14 @@ def Resultado_de_Busqueda(request):
     }
     return(render(request,"Home.html",data ))
 
+
 def categorias(request):
     cat = Tag.objects.all()
     data={
-        'Tags': cat
+        'stf': cat
     }
     return(render(request,"categorias.html", data ))
 
-def categoriasfiltradas(request,id):
-    itm = Items.objects.filter(tag=id)
-    data = {
-        'catf': itm
-    }
-    return(render(request,"categoriasfiltradas.html",data ))
+def categoriasfiltradas(request,cats):
+    category = Items.objects.filter(tag = cats)
+    return(render(request,"categoriasfiltradas.html",{'cats':cats, 'category':category}))

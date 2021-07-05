@@ -5,7 +5,42 @@
 
 {% block content%}
     <h1>Productos<h1>
+
+    {{ cats }}
+ <h1>Categoria Buscada: {{ cats }}<h1>
+    </br>
+    <!--{{category}}-->
     <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>    
+            {% for cat in  category %}
+            <li><a href="{% url 'Pantalla de Producto' cat.pk %}">{{cat.name}}</a>
+            <tr>
+            <th scope="row">{{ cat.name }}</th>
+            <td>{{ cat.tag }}</td>
+            <td>{{ cat.description }}</td>
+            <td>${{ cat.price | intcomma }}</td>
+            <td>
+                <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link " style="center">Ver mas</a>
+            </td>
+
+                </tr>    
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        {% include 'paginator.html' %} 
+    </div>  
+    <!--<table class="table">
     <thead>
         <tr>
             <th scope="col">Nombre</th>
@@ -25,5 +60,5 @@
         </tr>
     {% endfor %}
     </tbody>
-    </table>  
+    </table> --> 
 {% endblock %}

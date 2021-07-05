@@ -4,44 +4,37 @@
 {% load humanize %}
 
 {% block content%}
-    <h1>Productos<h1>
-    <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {% for x in Tags %} 
+    <h1>Categoria Buscada: {{ cats }}<h1>
+    </br>
+    {{category}}
+    <ul>
+    {% for cat in  category %}
+      
+    {% endfor %}
+    <ul>
+     <!--<div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        Categorias
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        {% for x in stf %} 
           <li><a class="dropdown-item" href="#">{{x}}</a></li>
         {% endfor %}   
-    </ul>    
-    <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for itm in productos %}
-        <tr>
-        <th scope="row"></th>
-        <td>{{ itm.name }}</td>
-        <td>{{ itm.tag }}</td>
-        <td>{{ itm.description }}</td>
-        <td>${{ itm.price| intcomma }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-    </table>  -->
-  <section>
-  
+      </ul>
+    </div>     
+   
     <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
         Categorias
       </a>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {% for x in Tags %} 
+        {% for x in stf %} 
           <li><a class="dropdown-item" href="#">{{x}}</a></li>
         {% endfor %}   
       </ul>
     </div>    
-  </section>
+    {% for x in stf %} 
+      <li><a  href="url '' ">{{x}}</a></li>
+    {% endfor %} --> 
+  
 {% endblock %}

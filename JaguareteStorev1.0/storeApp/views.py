@@ -10,6 +10,9 @@ from django.core.paginator import Paginator
 
 from django.db.models import Q
 # Create your views here.
+def tienda(request):
+    productos=Items.objects.all()
+    return render(request, "tienda.html", {"productos":productos})
 
 def Acera_de(request):
 
@@ -41,13 +44,12 @@ def Pantalla_de_Contacto(request):
     return  render(request,'Contacto.html')
 
 
-def Pantalla_de_Carito(request):
-    return  render(request,'Carrito.html')
+
 
 def buscar(request):
     if request.method == "POST":
         buscar = request.POST.get("buscar")
-        prod = Items.objects.filter(name__icontains=buscar) 
+        prod = Items.objects.filter(name__icontains=buscar)
         return  render(request,'buscar.html',{'buscar':buscar, 'Items':prod})
     else:
         return  render(request,'buscar.html',{})

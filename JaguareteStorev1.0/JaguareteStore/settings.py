@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storeApp',
     'registroApp',
+    'carro',
     'crispy_forms',
     'productoApp',
     'django.contrib.humanize',

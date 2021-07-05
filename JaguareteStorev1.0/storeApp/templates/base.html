@@ -21,12 +21,12 @@
 </head>
 
 <body>
-  <h1 class="site-heading text-center text-white d-none d-lg-block">
-    <span class="site-heading-lower">JAGUARETE KAA S.A. Tienda Online</span>
-  </h1>
  <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
+      <span>
+        <h6 class="site-heading-lower">JAGUARETE KAA S.A.</h6>
+      </span>
       <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'Home' %}">Inicio</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,14 +44,14 @@
           </li>
           {% if user.is_authenticated %}
           <li  class="nav-item px-lg-4">
-            <a href = "{% url 'logout' %}" class="nav-link text-uppercase text-expanded"> cerrar sesión</a>
+            <a href = "{% url 'logout' %}" class="nav-link text-uppercase text-expanded"> Cerrar Sesión</a>
           </li>
           <li class="nav-item px-lg-4">
             <a href = "#" class="nav-link text-uppercase text-expanded"> {{ user.username }} </a>
           </li>
           {% else %} 
             <li > 
-              <a href="{% url 'login' %}" class="nav-link text-uppercase text-expanded">iniciar sesión</a>
+              <a href="{% url 'login' %}" class="nav-link text-uppercase text-expanded">Iniciar Sesión</a>
             </li>
             <li > 
               <a href="{% url 'registro' %}" class="nav-link text-uppercase text-expanded">Registrarse</a>
@@ -67,22 +67,26 @@
             <li class="nav-item px-lg-4 {% if request.path == '/Listar' %} active {% endif %}">
               <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Listar Productos' %}">Mostrar Items</a>
             </li>
-          {% endif %}     
+          {% endif %}
+          {% if perms.app.add_tag %}
+            <li class="nav-item px-lg-4">
+              <a href = "{% url 'Cargar_Categoria' %}" class="nav-link text-uppercase text-expanded"> Cargar Categoria </a>
+            </li>  
+          {% endif %}   
           <!-- Solo visible para moderadores -->
-            <li class="nav-item px-lg-4 {% if request.path == '/categorias' %} active {% endif %}">
-              <a class="nav-link text-uppercase text-expanded" href="{% url 'categorias' %}"> Categorias</a>
-            </li>   
+          <li class="nav-item px-lg-4 {% if request.path == '/categorias' %} active {% endif %}">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'categorias' %}"> Categorias</a>
+          </li> 
+          <li > 
+            <a href="{% url 'tienda' %}" class="nav-link text-uppercase text-expanded">Carro</a>
+          </li>
         </ul>
+        <form class="d-flex" action = "{% url 'buscar' %}" method = "POST">
+          {% csrf_token %} 
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name = "buscar">
+          <button class="btn btn-outline-secondary" type="submit">Buscar</button>      
+        </form>
       </div>
-      
-
-    </div>
-      
-    <form class="d-flex" action = "{% url 'buscar' %}" method = "POST">
-      {% csrf_token %} 
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name = "buscar">
-      <button class="btn btn-outline-secondary" type="submit">Buscar</button>      
-    </form>
   </nav>
 
  <section>
@@ -108,16 +112,22 @@
 <!-- contenido cambiante-->
 {% endblock  %}
     <!-- Footer -->
-    <footer class="footer  text-center py-5">
+    <!-- Bootstrap -->
+    <script src="{% static 'storeApp/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'storeApp/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+  <!--<footer class="footer  text-center ">
+      <div class="container">
+        <p> JAGUARETE KAA S.A. 2021</p>
+        <p> Desarrollador web Jose Pedro Dominguez</p>
+      </div>
+  </footer>-->
+  <footer class="footer text-faded text-center py-5">
       <div class="container">
         <p class="m-0 mbt1">&copy; JAGUARETE KAA S.A. 2021</p>
         <p class="m-0 mbt1"> Desarrollador web Jose Pedro Dominguez</p>
       </div>
 	</footer>
-    <!-- Bootstrap -->
-    <script src="{% static 'storeApp/vendor/jquery/jquery.min.js'%}"></script>
-    <script src="{% static 'storeApp/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-
 </body>
 
 

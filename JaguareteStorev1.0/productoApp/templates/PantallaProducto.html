@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% load static %}
 {% block content%}
     <div class="container">
@@ -9,10 +9,10 @@
                 <img src="{{ itm.imag.url }}">
             {% endif %}
             <h3>{{itm.tag}}</h3>
-            <p>{{itm.description}}</p>
-            <h2>{{ itm.price }}<h2>
+            <p>Descripcion: {{itm.description}}</p>
+            <h2>${{ itm.price }}<h2>
             <td>
-            <a href="#" class="btn btn-info btn-sm">Comprar</a>
+            <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm">Comprar</a>
             </td>
         {% endfor  %}
 

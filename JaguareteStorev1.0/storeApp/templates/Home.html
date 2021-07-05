@@ -4,26 +4,8 @@
 {% load humanize %}
 {% block content%}
 
-  <!--{% for itm in entity %}
-    <div>
-        <div class="cta-inner text-center rounded container-m">
-            <div >
-                <h3>{{ itm.name }}</h3>
-                {% if itm.imag %}
-                    <img class="img-thumbnail"src="{{ itm.imag.url }}">
-                {% endif %}
-                <h3>{{ itm.tag }}</h3>
-                <h3>{{ itm.price| intcomma }}</h3>
-                <td>
-                    <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-info btn-sm">Ver mas</a>
-                </td>               
-            </div>
-
-        </div>
-    </div>
-  {% endfor %}-->
 </br>
-{% for itm in entity %} 
+ {% for itm in entity %} 
   <div style="">
     <div class="card" style="width: 18rem;height:auto;">
       {% if itm.imag %}
@@ -37,7 +19,6 @@
     </br>
   </div>
  {% endfor %}
-
 
 
   <!--<table class="table">

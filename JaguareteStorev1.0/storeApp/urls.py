@@ -10,9 +10,10 @@ urlpatterns = [
     path('', views.Pantalla_Principal, name="Home"),
     path('Acera_de', views.Acera_de, name="Acerca de"), 
     path('Pantalla_de_Contacto/',views.Pantalla_de_Contacto, name="Pantalla de Contacto"),
-    path('Pantalla_de_Carito/',views.Pantalla_de_Carito, name="Pantalla de Carrito"),
     path('tags/',views.tags, name="tags"),
     path('buscar/',views.buscar, name="buscar"),
+    path('tienda/',views.tienda,name="tienda"),
+    #path("carro/", views.carro, name="carro"),
     #####################################
 ]
 

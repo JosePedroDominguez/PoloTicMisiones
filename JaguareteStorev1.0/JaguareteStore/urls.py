@@ -25,7 +25,8 @@ urlpatterns = [
     path('storeApp/', include('storeApp.urls')),#enlaza con la App
     path('registroApp/', include('registroApp.urls')),
     path('productoApp/', include('productoApp.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('carro/', include('carro.urls')),  
 
 ]
 #urlpatterns+=static(settings.MEDIA_URL , document_root= settings.MEDIA_ROOT)
