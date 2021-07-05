@@ -1,15 +1,14 @@
 <html>
 
 <head>
-
+    <meta charset="UTF-8">
      {% load static %} 
 
     <!-- Bootstrap -->
     <link href="{% static 'storeApp/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
 
      <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
+     <link rel="preconnect" href="https://fonts.googleapis.com">
      <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
      <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
@@ -17,15 +16,14 @@
 
     <!-- Styles -->
     <link href="{% static 'storeApp/css/store.css' %} " rel="stylesheet">
+    <!--Sweet alert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-
-    <h1 class="site-heading text-center text-white d-none d-lg-block">
-        <span class="site-heading-lower">JAGUARETE KAA S.A. Tienda Online</span>
-      </h1>
-
-
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-lower">JAGUARETE KAA S.A. Tienda Online</span>
+  </h1>
  <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
@@ -41,80 +39,81 @@
           <li class="nav-item px-lg-4 {% if request.path == '/AcercaDe' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Acerca de' %}">Acerca De</a>
           </li>
-          <li class="nav-item px-lg-4 {% if request.path == '/PantallaProducto' %} active {% endif %}">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Producto' %}">Tienda</a>
-          </li>
-          <li class="nav-item px-lg-4 {% if request.path == '/PantallaLogin' %} active {% endif %}">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Login' %}">Login</a>
-          </li>
-          <li class="nav-item px-lg-4 {% if request.path == '/PantallaRegistro' %} active {% endif %}">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Registro' %}">Crear usuario</a>
-          </li>                             
           <li class="nav-item px-lg-4 {% if request.path == '/Pantalla_de_Contacto' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Contacto' %}">Contacto</a>
           </li>
-          <li class="nav-item px-lg-4 {% if request.path == '/PantallaCargaProducto' %} active {% endif %}">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Cargar Producto' %}">cargar Item</a>
-          </li>          
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categorias
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+          {% if user.is_authenticated %}
+          <li  class="nav-item px-lg-4">
+            <a href = "{% url 'logout' %}" class="nav-link text-uppercase text-expanded"> cerrar sesión</a>
           </li>
+          <li class="nav-item px-lg-4">
+            <a href = "#" class="nav-link text-uppercase text-expanded"> {{ user.username }} </a>
+          </li>
+          {% else %} 
+            <li > 
+              <a href="{% url 'login' %}" class="nav-link text-uppercase text-expanded">iniciar sesión</a>
+            </li>
+            <li > 
+              <a href="{% url 'registro' %}" class="nav-link text-uppercase text-expanded">Registrarse</a>
+            </li>           
+          {% endif %} 
+          <!-- Solo visible para moderadores -->
+          {% if perms.app.add_items %}
+            <li class="nav-item px-lg-4 {% if request.path == '/PantallaCargaProducto' %} active {% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Cargar Producto' %}">Cargar Item</a>
+            </li>
+          {% endif %}
+          {% if perms.app.view_items %}
+            <li class="nav-item px-lg-4 {% if request.path == '/Listar' %} active {% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Listar Productos' %}">Mostrar Items</a>
+            </li>
+          {% endif %}     
+          <!-- Solo visible para moderadores -->
+            <li class="nav-item px-lg-4 {% if request.path == '/categorias' %} active {% endif %}">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'categorias' %}"> Categorias</a>
+            </li>   
         </ul>
       </div>
+      
+
     </div>
       
-    <form class="d-flex" action = "/ResultadoBusqueda/" method = "GET">
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name = "itm">
-      <button class="btn btn-outline-success" type="submit">Buscar</button>      
+    <form class="d-flex" action = "{% url 'buscar' %}" method = "POST">
+      {% csrf_token %} 
+      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name = "buscar">
+      <button class="btn btn-outline-secondary" type="submit">Buscar</button>      
     </form>
   </nav>
-<!-- contenido cambiante-->
+
+ <section>
+  
+<!-- mensajes -->
+{% if messages %}
+  {% for m in messages %}
+      <script>
+          Swal.fire({
+            "title":"Felicitaciones",
+            "text" : "{{m}}",
+            "icon" : "success",
+          })
+      </script>
+  {% endfor %}
+{% endif %}
+<!-- mensajes -->
 {% block content %}
-
-
-
-{% endblock  %}
 <!-- contenido cambiante-->
+
+
+
+<!-- contenido cambiante-->
+{% endblock  %}
     <!-- Footer -->
     <footer class="footer  text-center py-5">
       <div class="container">
-        <p class="m-0">
-	        <a href="#" class="link">
-	          <span class="fa-stack fa-lg">
-	            <i class="fa fa-circle fa-stack-2x"></i>
-	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-	          </span>
-	        </a>
-	        <a href="#" class="link">
-	          <span class="fa-stack fa-lg">
-	            <i class="fa fa-circle fa-stack-2x"></i>
-	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-	          </span>
-	        </a>
-	        <a href="#" class="link">
-	          <span class="fa-stack fa-lg">
-	            <i class="fa fa-circle fa-stack-2x"></i>
-	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-	          </span>
-	        </a>
-	      </p>
-        <p class="m-0 mbt">
-        	<a href="sample.html" class="link">Política de privacidad</a> ·
-        	<a href="sample.html" class="link">Aviso legal</a> ·
-        	<a href="sample.html" class="link">Cookies</a>
-		    </p>
         <p class="m-0 mbt1">&copy; JAGUARETE KAA S.A. 2021</p>
         <p class="m-0 mbt1"> Desarrollador web Jose Pedro Dominguez</p>
       </div>
 	</footer>
-
     <!-- Bootstrap -->
     <script src="{% static 'storeApp/vendor/jquery/jquery.min.js'%}"></script>
     <script src="{% static 'storeApp/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>

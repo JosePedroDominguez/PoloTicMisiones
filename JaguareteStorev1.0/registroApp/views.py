@@ -1,18 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
-from django.http import HttpRequest
+from registroApp.forms import  CustomUserForm
 
-from registroApp.forms import FomularioUser
+from django.contrib import messages
 
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
-class Pantalla_de_Registro(HttpRequest):
-    def Registro(request):
-        user = FomularioUser()
-        return(render(request,"Registro.html", {"form": user}))
-    def Procesar_Registro(request):
-        user = FomularioUser(request.POST)
-        if user.is_valid():
-            user.save()
-            user = FomularioUser()
-        return (render(request,"Registro.html",{"form": user, "mensaje":"OK"}))
+
+def registro(request):
+    data={
+        'form': CustomUserForm() 
+    }
+    if request.method == 'POST':
+        formulario = CustomUserForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user= authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Cuenta Creada Exitosamente")
+            return redirect(to="Home")
+        data["form"] = formulario
+
+    return (render(request, 'registration/registro.html',data))
+

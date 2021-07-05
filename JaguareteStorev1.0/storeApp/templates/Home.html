@@ -1,21 +1,68 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load humanize %}
 {% block content%}
-    <!-- Message -->
-    <section class="page-section cta">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <div class="cta-inner text-center rounded">
-              <h2 class="section-heading mb-4">
-                <span class="section-heading-upper">aca tendria que haber un producto</span>
-                <span class="section-heading-lower">Garantizado</span>
-              </h2>
-              <p class="mb-0">¡¡¡¡¡SAMUARDO HEEEELP!!!!!</p>
+
+  <!--{% for itm in entity %}
+    <div>
+        <div class="cta-inner text-center rounded container-m">
+            <div >
+                <h3>{{ itm.name }}</h3>
+                {% if itm.imag %}
+                    <img class="img-thumbnail"src="{{ itm.imag.url }}">
+                {% endif %}
+                <h3>{{ itm.tag }}</h3>
+                <h3>{{ itm.price| intcomma }}</h3>
+                <td>
+                    <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-info btn-sm">Ver mas</a>
+                </td>               
             </div>
-          </div>
+
         </div>
+    </div>
+  {% endfor %}-->
+</br>
+{% for itm in entity %} 
+  <div style="">
+    <div class="card" style="width: 18rem;height:auto;">
+      {% if itm.imag %}
+      <img src="{{ itm.imag.url }}" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ itm.name }}</h5>
+        <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link " style="center">Ver mas</a>
       </div>
-    </section>
+    </div>
+    </br>
+  </div>
+ {% endfor %}
+
+
+
+  <!--<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for itm in productos %}
+        <tr>
+        <th scope="row"></th>
+        <td>{{ itm.name }}</td>
+        <td>{{ itm.tag }}</td>
+        <td>{{ itm.description }}</td>
+        <td>${{ itm.price| intcomma }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>-->  
+  <div>
+    {% include 'paginator.html' %} 
+  </div>
+
 {% endblock %}

@@ -2,6 +2,22 @@
 
 {% load static %}
 {% block content%}
-    <h1>Producto<h1>
+    <div class="container">
+        {% for itm in prod %}
+            <h1>{{ itm.name }}<h1>
+            {% if itm.imag %}
+                <img src="{{ itm.imag.url }}">
+            {% endif %}
+            <h3>{{itm.tag}}</h3>
+            <p>{{itm.description}}</p>
+            <h2>{{ itm.price }}<h2>
+            <td>
+            <a href="#" class="btn btn-info btn-sm">Comprar</a>
+            </td>
+        {% endfor  %}
+
+    </div>     
+
+
 
 {% endblock %}

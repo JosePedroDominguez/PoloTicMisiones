@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/storeApp/'
+LOGOUT_REDIRECT_URL = '/storeApp/'
 
 # Application definition
 
@@ -41,7 +45,7 @@ INSTALLED_APPS = [
     'registroApp',
     'crispy_forms',
     'productoApp',
-
+    'django.contrib.humanize',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -81,10 +85,11 @@ WSGI_APPLICATION = 'JaguareteStore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+     'ENGINE': 'django.db.backends.sqlite3',
+     'NAME': BASE_DIR / 'db.sqlite3',       
     }
 }
+
 
 
 # Password validation
@@ -109,7 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -125,9 +131,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL='media/'
+MEDIA_URL='/media/'
 
-MEDIA_ROOT=BASE_DIR/'media' 
+#MEDIA_ROOT=BASE_DIR/'media' 
+
+MEDIA_ROOT=os.path.join(BASE_DIR,"media" )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

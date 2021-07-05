@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block content%}
+  {% if buscar %}
+    <h1>Resultados para {{buscar}}</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        
+        {% for x in Items %}
+            <tr>
+            <th scope="row">{{ x.name }}</th>
+            <td>{{ x.tag }}</td>
+            <td>{{ x.description }}</td>
+            <td>${{ x.price | intcomma }}</td>
+            <td>
+                <a href="{% url 'Pantalla de Producto' x.id %}" class="btn btn-primary stretched-link " style="center">Ver mas</a>
+            </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        <div>
+            {% include 'paginator.html' %} 
+        </div> 
+    {% else %}
+        <h1>No se ingreso nigun criterio de busqueda</h1>
+    {% endif %}
+  
+   
+
+{% endblock %}

@@ -1,11 +1,16 @@
 from django.urls import path
 
-from productoApp.views import Pantalla_de_Producto,Pantalla_de_Cargar_Producto,Pantalla_de_Edita_Borrar
+from productoApp.views import Pantalla_de_Producto,Pantalla_de_Cargar_Producto,listarItems,Editar,Borrar,categorias,Resultado_de_Busqueda,categoriasfiltradas
 urlpatterns = [
     ###############URLS de store###############
-    path('PantallaProducto/',Pantalla_de_Producto, name="Pantalla de Producto"),
-    path('PantallaEditaBorrar/', Pantalla_de_Edita_Borrar, name="Pantalla de Editar o Borar Producto"),
-    path('PantallaCargaProducto/',Pantalla_de_Cargar_Producto.Producto, name="Pantalla de Cargar Producto"),
-    path('formularioItem/',Pantalla_de_Cargar_Producto.Procesar_Producto, name="guardarItem"),
+    path('PantallaProducto/<id>/',Pantalla_de_Producto, name="Pantalla de Producto"),
+    path('Listar/', listarItems, name="Pantalla de Listar Productos"),
+    path('Editar/<id>/', Editar, name="Editar Producto"),
+    path('Borrar/<id>/', Borrar, name="Borar Producto"),
+    path('PantallaCargaProducto/',Pantalla_de_Cargar_Producto, name="Pantalla de Cargar Producto"),
+    path('formularioItem/',Pantalla_de_Cargar_Producto, name="guardarItem"),
+    path('ResultadoBusqueda/',Resultado_de_Busqueda, name="Resultado de Busqueda"),
+    path('categorias/', categorias,name="categorias"),
+    path('categoriasfiltradas/<id>',categoriasfiltradas,name="categoriasfiltradas"),
     #####################################
 ]
