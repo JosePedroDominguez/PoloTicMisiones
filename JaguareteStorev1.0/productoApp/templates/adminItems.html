@@ -27,33 +27,33 @@
 {% load humanize %}
 
 {% block content%}
-  <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Categoria</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Opciones</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for x in entity %}
-        <tr>
-        <th scope="row">{{ x.id }}</th>
-        <td>{{ x.name }}</td>
-        <td>{{ x.tag }}</td>
-        <td>{{ x.description }}</td>
-        <td>${{ x.price | intcomma }}</td>
-        <td>
-            <a href="{% url 'Editar Producto' x.id %}" class="btn btn-info btn-sm">Editar</a>
-            <a href="{% url 'Borar Producto' x.id %}"  class="btn btn-danger btn-sm">Eliminar</a>
-        </td>
+  <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for x in entity %}
+            <tr>
+            <th scope="row">{{ x.id }}</th>
+            <td>{{ x.name }}</td>
+            <td>{{ x.tag }}</td>
+            <td>{{ x.description }}</td>
+            <td>${{ x.price | intcomma }}</td>
+            <td>
+                <a href="{% url 'Editar Producto' x.id %}" class="btn btn-info btn-sm">Editar</a>
+                <a href="{% url 'Borar Producto' x.id %}"  class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
 
-        </tr>
-    {% endfor %}
-    </tbody>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table>
     <div>
         {% include 'paginator.html' %} 

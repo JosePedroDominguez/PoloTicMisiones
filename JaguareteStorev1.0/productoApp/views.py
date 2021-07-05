@@ -102,6 +102,7 @@ def categorias(request):
     }
     return(render(request,"categorias.html", data ))
 
-def categoriasfiltradas(request,cats):
-    category = Items.objects.filter(tag = cats)
-    return(render(request,"categoriasfiltradas.html",{'cats':cats, 'category':category}))
+def categoriasfiltradas(request,id):
+    category = Items.objects.filter(tag = id)
+    return(render(request,"categoriasfiltradas.html",{'id':id, 'category':category}))
+

@@ -4,16 +4,12 @@
 {% load humanize %}
 
 {% block content%}
-    <h1>Productos<h1>
-
-    {{ cats }}
- <h1>Categoria Buscada: {{ cats }}<h1>
-    </br>
+ <h1>Productos<h1>
+    
     <!--{{category}}-->
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
-            <th scope="col">Id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Categoria</th>
             <th scope="col">Descripcion</th>
@@ -22,15 +18,15 @@
             </tr>
         </thead>
         <tbody>    
-            {% for cat in  category %}
-            <li><a href="{% url 'Pantalla de Producto' cat.pk %}">{{cat.name}}</a>
+            {% for x in  category  %}
             <tr>
-            <th scope="row">{{ cat.name }}</th>
-            <td>{{ cat.tag }}</td>
-            <td>{{ cat.description }}</td>
-            <td>${{ cat.price | intcomma }}</td>
+            <th scope="row">{{ x.name }}</th>
+            <td>{{ x.tag }}</td>
+            <td>{{ x.description }}</td>
+            <td>${{ x.price | intcomma }}</td>
             <td>
-                <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link " style="center">Ver mas</a>
+                <a href="{% url 'Pantalla de Producto' x.id %}" class="btn btn-primary stretched-link btn-sm " style="center">Ver</a> 
+                <a href="{% url 'carro:agregar' x.id %}" class="btn btn-info btn-sm" style="center">Comprar</a>
             </td>
 
                 </tr>    
@@ -40,25 +36,4 @@
     <div>
         {% include 'paginator.html' %} 
     </div>  
-    <!--<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for x in catf %}
-        <tr>
-        <th scope="row">{{ x.id }}</th>
-        <td>{{ x.name }}</td>
-        <td>{{ x.tag }}</td>
-        <td>{{ x.description }}</td>
-        <td>${{ x.price| intcomma }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-    </table> --> 
 {% endblock %}

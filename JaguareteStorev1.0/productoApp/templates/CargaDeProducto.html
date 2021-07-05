@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block content%}
 {% load crispy_forms_tags %}
+{% block content%}
     {% if form.errors %}
         <div class="alert alert-danger" role="alert">
            Error al carga el producto
@@ -11,30 +11,28 @@
     <h1>Cargar de Producto<h1>
     <div class="row">
     
-        <div class="col-12.col-md-6.offset-md-3">
 
-            <div class="card">
-                <div class="card-body">
+        <div class="card">
+            <div class="card-body">
                         
-                        <form action="" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form | crispy}}
-                            <div class="d-flex justify-content-center">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form | crispy}}
+                        <div class="d-flex justify-content-center">
 
-                                <input class="btn btn-secondary" type="reset" value="cancelar">                        
-                                &nbsp; 
-                                <input class="btn btn-primary" type="submit" value="guardarItem">
+                            <input class="btn btn-secondary" type="reset" value="cancelar">                        
+                            &nbsp; 
+                            <input class="btn btn-primary" type="submit" value="guardarItem">
 
-                            </div>
+                        </div>
 
                                 
-                        </form>
-                        {{mensaje}}
-                </div>
-
-            <div>
+                    </form>
+                {{mensaje}}
+           </div>
 
         <div>
+
 
     <div>
 

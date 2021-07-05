@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from .carro import Carro
 
 from productoApp.models import Items
@@ -15,7 +13,7 @@ def agregar_producto(request, id):
 
     carro.agregar(producto=producto)
 
-    return redirect("tienda")
+    return redirect("caja")
 
 
 def eliminar_producto(request, producto_id):
@@ -26,7 +24,7 @@ def eliminar_producto(request, producto_id):
 
     carro.eliminar(producto=producto)
 
-    return redirect("tienda")
+    return redirect("caja")
 
 
 def restar_producto(request, producto_id):
@@ -37,7 +35,7 @@ def restar_producto(request, producto_id):
 
     carro.restar_producto(producto=producto)
 
-    return redirect("tienda")
+    return redirect("caja")
 
 
 def limpiar_carro(request, producto_id):
@@ -46,4 +44,4 @@ def limpiar_carro(request, producto_id):
 
     carro.limpiar_carro()
 
-    return redirect("tienda")
+    return redirect("caja")

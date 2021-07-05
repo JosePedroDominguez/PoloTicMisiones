@@ -4,16 +4,20 @@
 {% load humanize %}
 {% block content%}
 
-</br>
+
  {% for itm in entity %} 
-  <div style="">
+ 
+  <div class="col-md-3 u-list u-repeater u-list-1 product-item" style="width: 240px;margin: 5px 5px;">
     <div class="card" style="width: 18rem;height:auto;">
       {% if itm.imag %}
       <img src="{{ itm.imag.url }}" class="card-img-top" alt="...">
       {% endif %}
-      <div class="card-body">
+      <div class="card-body" >
         <h5 class="card-title">{{ itm.name }}</h5>
-        <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link " style="center">Ver mas</a>
+      </div>
+      <div class="card-footer text-center">
+        <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link btn-sm" style="center">Ver</a></hr>
+        <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm" style="center">Comprar</a>
       </div>
     </div>
     </br>

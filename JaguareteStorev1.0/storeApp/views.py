@@ -10,9 +10,9 @@ from django.core.paginator import Paginator
 
 from django.db.models import Q
 # Create your views here.
-def tienda(request):
+def caja(request):
     productos=Items.objects.all()
-    return render(request, "tienda.html", {"productos":productos})
+    return render(request, "caja.html", {"productos":productos})
 
 def Acera_de(request):
 

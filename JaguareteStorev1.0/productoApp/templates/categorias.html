@@ -5,14 +5,7 @@
 
 {% block content%}
     <h1>Categoria Buscada: {{ cats }}<h1>
-    </br>
-    {{category}}
-    <ul>
-    {% for cat in  category %}
-      
-    {% endfor %}
-    <ul>
-     <!--<div class="dropdown">
+  <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
         Categorias
       </a>
@@ -22,19 +15,8 @@
         {% endfor %}   
       </ul>
     </div>     
-   
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        Categorias
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {% for x in stf %} 
-          <li><a class="dropdown-item" href="#">{{x}}</a></li>
-        {% endfor %}   
-      </ul>
-    </div>    
     {% for x in stf %} 
-      <li><a  href="url '' ">{{x}}</a></li>
-    {% endfor %} --> 
-  
+      <li><a  href="{% url 'categoriasfiltradas' x.id %}">{{x}}</a></li>
+    {% endfor %} 
+  </div>
 {% endblock %}

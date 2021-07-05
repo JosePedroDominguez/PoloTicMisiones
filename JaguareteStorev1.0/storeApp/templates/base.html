@@ -77,8 +77,8 @@
           <li class="nav-item px-lg-4 {% if request.path == '/categorias' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'categorias' %}"> Categorias</a>
           </li> 
-          <li > 
-            <a href="{% url 'tienda' %}" class="nav-link text-uppercase text-expanded">Carro</a>
+          <li class="nav-item px-lg-4 {% if request.path == '/caja' %} active {% endif %}"> 
+            <a href="{% url 'caja' %}" class="nav-link text-uppercase text-expanded">Carro</a>
           </li>
         </ul>
         <form class="d-flex" action = "{% url 'buscar' %}" method = "POST">
@@ -113,21 +113,15 @@
 {% endblock  %}
     <!-- Footer -->
     <!-- Bootstrap -->
+    <footer class="footer  text-center py-5"style="font-weight: bold;align-self: flex-end;">
+        <div class="container">
+          <p class="m-0 mbt1">&copy; JAGUARETE KAA S.A. 2021</p>
+          <p class="m-0 mbt1"> Desarrollador web Jose Pedro Dominguez</p>
+        </div>
+    </footer>
     <script src="{% static 'storeApp/vendor/jquery/jquery.min.js'%}"></script>
     <script src="{% static 'storeApp/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
 
-  <!--<footer class="footer  text-center ">
-      <div class="container">
-        <p> JAGUARETE KAA S.A. 2021</p>
-        <p> Desarrollador web Jose Pedro Dominguez</p>
-      </div>
-  </footer>-->
-  <footer class="footer text-faded text-center py-5">
-      <div class="container">
-        <p class="m-0 mbt1">&copy; JAGUARETE KAA S.A. 2021</p>
-        <p class="m-0 mbt1"> Desarrollador web Jose Pedro Dominguez</p>
-      </div>
-	</footer>
 </body>
 
 

@@ -12,6 +12,6 @@ urlpatterns = [
     path('formularioItem/',Pantalla_de_Cargar_Producto, name="guardarItem"),
     path('ResultadoBusqueda/',Resultado_de_Busqueda, name="Resultado de Busqueda"),
     path('categorias/', categorias,name="categorias"),
-    path('categoriasfiltradas/<str:cats>/',categoriasfiltradas,name="categoriasfiltradas"),
+    path('categoriasfiltradas/<id>/',categoriasfiltradas,name="categoriasfiltradas"),
     #####################################
 ]

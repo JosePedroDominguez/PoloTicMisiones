@@ -12,7 +12,7 @@ urlpatterns = [
     path('Pantalla_de_Contacto/',views.Pantalla_de_Contacto, name="Pantalla de Contacto"),
     path('tags/',views.tags, name="tags"),
     path('buscar/',views.buscar, name="buscar"),
-    path('tienda/',views.tienda,name="tienda"),
+    path('caja/',views.caja,name="caja"),
     #path("carro/", views.carro, name="carro"),
     #####################################
 ]
