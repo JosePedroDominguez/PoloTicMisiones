@@ -42,21 +42,6 @@
           <li class="nav-item px-lg-4 {% if request.path == '/Pantalla_de_Contacto' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Pantalla de Contacto' %}">Contacto</a>
           </li>
-          {% if user.is_authenticated %}
-          <li  class="nav-item px-lg-4">
-            <a href = "{% url 'logout' %}" class="nav-link text-uppercase text-expanded"> Cerrar Sesión</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a href = "#" class="nav-link text-uppercase text-expanded"> {{ user.username }} </a>
-          </li>
-          {% else %} 
-            <li > 
-              <a href="{% url 'login' %}" class="nav-link text-uppercase text-expanded">Iniciar Sesión</a>
-            </li>
-            <li > 
-              <a href="{% url 'registro' %}" class="nav-link text-uppercase text-expanded">Registrarse</a>
-            </li>           
-          {% endif %} 
           <!-- Solo visible para moderadores -->
           {% if perms.app.add_items %}
             <li class="nav-item px-lg-4 {% if request.path == '/PantallaCargaProducto' %} active {% endif %}">
@@ -76,11 +61,27 @@
           <!-- Solo visible para moderadores -->
           <li class="nav-item px-lg-4 {% if request.path == '/categorias' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'categorias' %}"> Categorias</a>
-          </li> 
+          {% if user.is_authenticated %}
+          <li  class="nav-item px-lg-4">
+            <a href = "{% url 'logout' %}" class="nav-link text-uppercase text-expanded"> Cerrar Sesión</a>
+          </li>
           <li class="nav-item px-lg-4 {% if request.path == '/caja' %} active {% endif %}"> 
             <a href="{% url 'caja' %}" class="nav-link text-uppercase text-expanded">Carro</a>
           </li>
-        </ul>
+          <li class="nav-item px-lg-4">
+            <a href = "#" class="nav-link text-uppercase text-expanded"> {{ user.username }} </a>
+          </li>
+          {% else %} 
+            <li > 
+              <a href="{% url 'login' %}" class="nav-link text-uppercase text-expanded">Iniciar Sesión</a>
+            </li>
+            <li > 
+              <a href="{% url 'registro' %}" class="nav-link text-uppercase text-expanded">Registrarse</a>
+            </li>           
+          {% endif %} 
+          </li> 
+        </ul>         
+      </div>
         <form class="d-flex" action = "{% url 'buscar' %}" method = "POST">
           {% csrf_token %} 
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name = "buscar">
@@ -112,13 +113,13 @@
 <!-- contenido cambiante-->
 {% endblock  %}
     <!-- Footer -->
-    <!-- Bootstrap -->
-    <footer class="footer  text-center py-5"style="font-weight: bold;align-self: flex-end;">
+    <footer  class="footer  text-center py-5"style="font-weight: bold;align-self: flex-end; ">
         <div class="container">
           <p class="m-0 mbt1">&copy; JAGUARETE KAA S.A. 2021</p>
           <p class="m-0 mbt1"> Desarrollador web Jose Pedro Dominguez</p>
         </div>
     </footer>
+    <!-- Bootstrap -->
     <script src="{% static 'storeApp/vendor/jquery/jquery.min.js'%}"></script>
     <script src="{% static 'storeApp/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
 

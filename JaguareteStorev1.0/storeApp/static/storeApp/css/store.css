@@ -34,6 +34,7 @@ p{
   margin-top: 5rem;
   margin-bottom: 5rem;
   text-transform: uppercase;
+  text-align: left;
   line-height: 1;
   font-family: 'Dancing Script', cursive;
 }
@@ -241,13 +242,15 @@ p{
 
 .footer {
   width: 100%;
-  
   align-self: flex-end;
   background-color: #296bc2e0;
 
    
 }
-
+.box {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 .btn {

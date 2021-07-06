@@ -19,7 +19,8 @@ def Acera_de(request):
     return  render(request,'AcercaDe.html')
     
 def Pantalla_Principal(request):
-    itm = Items.objects.all()
+    #itm = Items.objects.all()
+    itm = Items.objects.order_by('-id')
     page = request.GET.get('page',1)#paginacion
 
     try:
@@ -42,9 +43,6 @@ def tags(request):
 
 def Pantalla_de_Contacto(request):
     return  render(request,'Contacto.html')
-
-
-
 
 def buscar(request):
     if request.method == "POST":
