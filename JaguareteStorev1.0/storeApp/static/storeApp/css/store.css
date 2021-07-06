@@ -3,7 +3,8 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  background-color: rgba(145, 32, 28, 0.699);
+  background-color: #B29980
+  ;
 }
 
 h1{
@@ -93,16 +94,16 @@ p{
 }
 
 .bg-faded {
-  background-color: rgba(156, 63, 63, 0.85);
+  background-color: rgba(156, 63, 63, 0.933);
 }
 
 #mainNav {
-  background-color:  #296bc2e0;;
+  background-color:  #296bc2e0;
   font-family: 'Raleway';
 }
 
 #mainNav .navbar-brand {
-  color: #296bc2e0;
+  color: rgba(204, 51, 255, 0.624);;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -111,7 +112,7 @@ p{
 }
 
 #mainNav .navbar-nav .nav-item.active .nav-link {
-  color: #ffffff;
+  color: #19bf118c;
   text-decoration: underline;
 }
 
@@ -120,11 +121,11 @@ p{
     font-size: 0.9rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 23, 196, 0.926);
     text-decoration: underline;
   }
   #mainNav .navbar-nav .nav-item.active .nav-link:hover {
-    color: #ffffff;
+    color: #521a1a;
     text-decoration: underline;
   }
 }
@@ -323,27 +324,11 @@ text-decoration: underline;
 
   text-decoration: none;
 }
-
-
-.contenedorFormulario{
-  
-  background-color: rgb(199, 143, 86);
-
-  width: 70%;
-
-  margin: 10px auto;
-
-  border-radius: 5px;
-
-  padding: 5px 0px;
-
-  font-family: 'Raleway';
-
-  text-align: center;
-
+li{
+  color: black
 }
 
 
-
-
-
+small{
+  color: black
+}
