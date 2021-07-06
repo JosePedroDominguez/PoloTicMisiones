@@ -1,8 +1,7 @@
 <html>
-
 <head>
     <meta charset="UTF-8">
-     {% load static %} 
+     {% load static  %} 
 
     <!-- Bootstrap -->
     <link href="{% static 'storeApp/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
@@ -65,21 +64,26 @@
           <li  class="nav-item px-lg-4">
             <a href = "{% url 'logout' %}" class="nav-link text-uppercase text-expanded"> Cerrar Sesión</a>
           </li>
-          <li class="nav-item px-lg-4 {% if request.path == '/caja' %} active {% endif %}"> 
-            <a href="{% url 'caja' %}" class="nav-link text-uppercase text-expanded">Carro</a>
-          </li>
           <li class="nav-item px-lg-4">
             <a href = "#" class="nav-link text-uppercase text-expanded"> {{ user.username }} </a>
           </li>
           {% else %} 
-            <li > 
+            <li class="nav-item px-lg-4"> 
               <a href="{% url 'login' %}" class="nav-link text-uppercase text-expanded">Iniciar Sesión</a>
             </li>
-            <li > 
+            <li class="nav-item px-lg-4"> 
               <a href="{% url 'registro' %}" class="nav-link text-uppercase text-expanded">Registrarse</a>
             </li>           
           {% endif %} 
-          </li> 
+          {% if user.is_staff%}
+          <li class="nav-item px-lg-4 {% if request.path == '/caja' %} active {% endif %}"> 
+            <a href="#" class="nav-link text-uppercase text-expanded"></a>
+          </li>
+          {% else %}
+            <li class="nav-item px-lg-4 {% if request.path == '/caja' %} active {% endif %}"> 
+              <a href="{% url 'caja' %}" class="nav-link text-uppercase text-expanded">Carro</a>
+            </li>
+          {% endif %} 
         </ul>         
       </div>
         <form class="d-flex" action = "{% url 'buscar' %}" method = "POST">

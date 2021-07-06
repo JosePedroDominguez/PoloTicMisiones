@@ -1,29 +1,36 @@
 body {
   font-family: 'Raleway';
- 
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-color: rgba(145, 32, 28, 0.699);
 }
 
-h1,
+h1{
+  
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
 h2,
 h3,
 h4,
 h5,
 h6 {
   
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Raleway';
   font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
 
 }
-
 p{
   line-height: 1.75;
   font-family: 'Raleway';
-  color: rgb(255, 255, 255);
+  color: rgb(9, 45, 186);
 }
 
 .text-faded {
@@ -258,7 +265,13 @@ p{
 
 }
 
-
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
 .font-weight-light {
   font-weight: 100 !important;

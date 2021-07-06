@@ -2,22 +2,48 @@
 {% load humanize %}
 {% load static %}
 {% block content%}
-    <div class="container ">
-       </div class="cta-inner text-center rounded"> 
-            {% for itm in prod %}
-                <h1>{{ itm.name }}<h1>
-                {% if itm.imag %}
-                    <img class="u-image u-image-default u-image-1"  src="{{ itm.imag.url }}" data-image-width="693" data-image-height="1080">
-                {% endif %}
-                <h3>{{itm.tag}}</h3>
-                <p>Descripcion: {{itm.description}}</p>
-                <h2>${{ itm.price }}<h2>
-                <td>
-                <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm">Comprar</a>
-                </td>
-            {% endfor  %}
-        </div>
-    </div>     
-
+    
+     <div class="card mb-3">
+        {% for itm in prod %}
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">{{itm.name}}</h1>
+                    <p class="card-text">{{itm.description}}</p>
+                    <div style="display:flex;">
+                        <div>
+                        <p class="card-text"><medium class="text-muted" style="font-weight: bold; center;width: 100%; float:left;">${{ itm.price }}</medium>
+                        </div>
+                        <div>
+                        </p><a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm" style="center;width: 100%; float:left;">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="{{itm.imag.url}}" class="card-img-bottom" alt="...">
+            </div>
+        {% endfor  %}
+    </div>
 
 {% endblock %}
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<div id="contenedor" style="display:flex;">
+     <div id="primero" style="width: 25%; float:left;">
+         En un lugar de la Mancha, de cuyo

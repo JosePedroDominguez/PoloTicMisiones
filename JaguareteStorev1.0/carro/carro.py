@@ -1,3 +1,5 @@
+from django.conf import settings
+from decimal import Decimal
 class Carro:
     def __init__(self, request):
         self.request=request
@@ -44,6 +46,15 @@ class Carro:
                     break
         self.guardar_carro()
 
-    def limpiar_carro(self):
-        self.session["carro"]={}
-        self.session.modified=True
+    def clear(self):
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True    
+        self.save()
+
+    def total(request):
+        total = 0
+        #if 'carro' in request.session:
+        for key, value in request.session["carro"].items():
+            total=total+float(value["precio"])*(value["cantidad"])
+        return {"total":total}
+        

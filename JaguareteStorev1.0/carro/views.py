@@ -1,9 +1,8 @@
-from .carro import Carro
-
 from productoApp.models import Items
 
 from django.shortcuts import redirect
 
+from .carro import Carro
 # Create your views here
 def agregar_producto(request, id):
 
@@ -37,11 +36,7 @@ def restar_producto(request, producto_id):
 
     return redirect("caja")
 
-
-def limpiar(request, producto_id):
-
-    carro=Carro(request)
-    carro.limpiar_carro()
-
-
+def cart_clear(request):
+    cart = Carro(request)
+    cart.clear()
     return redirect("caja")

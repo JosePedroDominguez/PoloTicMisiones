@@ -7,7 +7,7 @@
   <h1>Categoria Buscada: {{ cats }}<h1>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown button
+      Categorias
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       {% for x in stf %} 
@@ -17,9 +17,5 @@
     </div>
     
   </div>
-  <!--
-  {% for x in stf %} 
-    <li><a  href="{% url 'categoriasfiltradas' x.id %}">{{x}}</a></li>
-  {% endfor %} -->
  
 {% endblock %}

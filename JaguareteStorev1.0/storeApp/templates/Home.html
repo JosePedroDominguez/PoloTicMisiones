@@ -5,54 +5,56 @@
 {% block content%}
 
 
- {% for itm in entity %} 
- <!--"box col-md-3 u-list u-repeater u-list-1 product-item"-->
-  <div class="box" style="width: 240px;margin: 5px 5px;align-content: center;display: flex;
-  justify-content: space-between;">
-    <div class="card" style="width: 18rem;height:auto;">
-      {% if itm.imag %}
-      <img src="{{ itm.imag.url }}" class="card-img-top" alt="...">
-      {% endif %}
-      <div class="card-body" >
-        <h5 class="card-title">{{ itm.name }}</h5>
-      </div>
-      <div class="card-footer text-center">
-        <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link btn-sm" style="center">Ver</a></hr>
-        <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm" style="center">Comprar</a>
-      </div>
-    </div>
-    </br>
-  </div>
- {% endfor %}
+        </br>
+        <div class="container">
+          <div class="row   " >
+            {% for itm in entity %} 
+              <div class="col">
+                <div class="card border bg-light" style="width: 18rem;height:auto;">
+                  </br>
+                  {% if itm.imag %}
+                  <img src="{{ itm.imag.url }}" class="card-img-top  mx-auto d-block" style="max-width: 250px;height: 200px;">
+                  {% endif %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ itm.name }}</h5>
+                  </div>
+                  <div class="card-footer text-center">
+                    <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link btn-sm" style="center">Ver</a></hr>
+                    <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm" style="center">Comprar</a>
+                  </div>
+                </div>
+                </br>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
 
-
-  <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for itm in entity %}
-      <tr>
-        <th scope="row">{{ itm.name }}</th>
-        <td>{{ itm.tag }}</td>
-        <td>{{ itm.description }}</td>
-        <td>${{ itm.price| intcomma }}</td>
-        <td style="text-align: center;">
-          <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link btn-sm" style="center">Ver</a></hr>
-          <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm" style="center">Comprar</a>
-
-        </td>
-      </tr>
-    {% endfor %}
-    </tbody>
-    </table>  
   <div>
     {% include 'paginator.html' %} 
-  </div>
+  </div> 
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Precio</th>
+          </tr>
+      </thead>
+      <tbody>
+      {% for itm in entity %}
+        <tr>
+          <th scope="row">{{ itm.name }}</th>
+          <td>{{ itm.tag }}</td>
+          <td>{{ itm.description }}</td>
+          <td>${{ itm.price| intcomma }}</td>
+          <td style="text-align: center;">
+            <a href="{% url 'Pantalla de Producto' itm.id %}" class="btn btn-primary stretched-link btn-sm" style="center">Ver</a></hr>
+            <a href="{% url 'carro:agregar' itm.id %}" class="btn btn-info btn-sm" style="center">Comprar</a>
 
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table> 
 {% endblock %}
