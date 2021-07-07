@@ -28,7 +28,6 @@
                                 <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
                                 <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-danger">-</a><br/>
                             </td>
-
                         </tr>
 
                     {% endfor %}
@@ -51,14 +50,11 @@
             <tfoot>
                 <tr >
                     <td colspan="3">
-
-                        <p>Total: $  {{total}} </p>
-
-
+                        <div><b>Total:</b>{{importe_total_carro}} </div>
                     </td>
                     <td class="text-center">
                         <a href="#" class="btn btn-sm btn-success">Pagar Compra</a>
-                        <a href="#" class="btn btn-sm btn-danger">Vaciar Carro</a><br/>
+                        <a  href="{% url 'carro:cart_clear' %}" class="btn btn-sm btn-danger">Vaciar Carro</a><br/>
 
                     </td>
 

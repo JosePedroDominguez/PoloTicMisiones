@@ -37,6 +37,6 @@ def restar_producto(request, producto_id):
     return redirect("caja")
 
 def cart_clear(request):
-    cart = Carro(request)
-    cart.clear()
-    return redirect("caja")
+   carro=Carro(request)
+   carro.cart_clear()
+   return redirect("caja")
