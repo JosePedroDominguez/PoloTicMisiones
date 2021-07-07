@@ -30,7 +30,7 @@ def Pantalla_Principal(request):
         raise Http404
     data = {
         'entity': itm,
-        'paginator':paginator
+        'paginator':paginator,
     }
     return(render(request,"Home.html",data ))
 

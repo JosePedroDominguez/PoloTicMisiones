@@ -5,7 +5,10 @@
 {% block content%}
         </br>
         <div class="container">
-          <div class="row   " >
+          <div class="row " > 
+          <script>
+            cont=0
+          </script>       
             {% for itm in entity %} 
               <div class="col">
                 <div class="card border bg-light" style="width: 18rem;height:auto;">
@@ -23,6 +26,11 @@
                 </div>
                 </br>
               </div>
+              <script>
+                cont+=1
+                if (cont == 3 ):
+                  break
+              </script>
             {% endfor %}
           </div>
         </div>

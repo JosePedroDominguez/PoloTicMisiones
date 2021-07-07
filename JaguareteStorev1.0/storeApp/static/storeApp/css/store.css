@@ -332,3 +332,14 @@ li{
 small{
   color: black
 }
+
+.navbar-logo{
+  display: inline-block;
+  vertical-align: left;
+  width: 60px;
+}
+.navbar-logo img{
+  display: block;
+  width: 100%;
+  height: auto;
+}

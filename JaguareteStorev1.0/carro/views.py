@@ -21,6 +21,7 @@ def eliminar_producto(request, producto_id):
 
     producto=Items.objects.get(id=producto_id)
 
+
     carro.eliminar(producto=producto)
 
     return redirect("caja")

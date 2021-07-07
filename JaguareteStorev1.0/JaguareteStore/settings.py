@@ -73,7 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'carro.context_processor.importe_total_carro',     
+                #'carro.context_processor.importe_total_carro',     
             ],
         },
     },
@@ -139,7 +139,7 @@ MEDIA_URL='/media/'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,"media" )
 
-CART_SESSION_ID = 'carro'
+#CART_SESSION_ID = 'carro'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
